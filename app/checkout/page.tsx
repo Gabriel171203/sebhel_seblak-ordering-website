@@ -46,7 +46,7 @@ export default function CheckoutPage() {
         const formData = new FormData();
         formData.append('file', file);
         // Using unsigned upload preset for simplicity
-        // USER needs to set these in .env.local
+        // USER needs to set these in .env
         const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'sebhel-temp';
         const uploadPreset = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || 'unsigned_preset';
 
