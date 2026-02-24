@@ -3,6 +3,23 @@ import styles from './HeroSection.module.css';
 import { ArrowRight, Flame, Sparkles, Zap } from 'lucide-react';
 
 export default function HeroSection() {
+    const scrollToMenu = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const menuSection = document.getElementById('menu');
+        if (menuSection) {
+            const offset = 80; // Navbar height offset
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = menuSection.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <section className={styles.hero}>
             {/* Decorative Floating Elements */}
@@ -25,12 +42,12 @@ export default function HeroSection() {
                         Racik seblak impianmu dengan topping melimpah dan tingkat kepedasan yang pas di hati. Garansi ketagihan!
                     </p>
                     <div className={styles.actions}>
-                        <Link href="#menu" className="btn btn-primary">
+                        <a href="#menu" onClick={scrollToMenu} className="btn btn-primary">
                             Mulai Pesan <ArrowRight size={18} style={{ marginLeft: '8px' }} />
-                        </Link>
-                        <Link href="#menu" className="btn btn-outline">
+                        </a>
+                        <a href="#menu" onClick={scrollToMenu} className="btn btn-outline">
                             Lihat Menu
-                        </Link>
+                        </a>
                     </div>
                 </div>
 
