@@ -1,0 +1,311 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+}
+
+.modal {
+    background-color: #000;
+    width: 95%;
+    max-width: 900px;
+    border: 2px solid var(--color-primary);
+    /* Neo-brutal shadow */
+    box-shadow: 15px 15px 0px rgba(40, 40, 40, 1);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.closeButton {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modalContent {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .modalContent {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+/* Left Column */
+.leftCol {
+    padding: 0;
+    /* Remove padding to let hero fill top */
+    background-color: #121212;
+    border-right: 1px solid #333;
+}
+
+.modalHero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-bottom: 3px solid black;
+}
+
+.modalHeroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modalHeroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+}
+
+.labHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.4rem;
+    color: var(--color-primary);
+    font-style: italic;
+    font-weight: 800;
+}
+
+.labTitle {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.productTitle {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 0.3rem;
+    line-height: 1;
+}
+
+.description {
+    color: #888;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* Add padding back to sections below hero */
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+.spicinessOptions {
+    display: flex;
+    gap: 1rem;
+    height: 100px;
+    /* Bar chart height */
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.levelBtn {
+    flex: 1;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    height: 100%;
+}
+
+.levelIndicator {
+    width: 100%;
+    background-color: #333;
+    transition: all 0.3s;
+}
+
+.levelNum {
+    font-weight: bold;
+    font-family: var(--font-heading);
+}
+
+.levelLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.toppingsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.toppingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    transition: all 0.2s;
+}
+
+.activeTopping {
+    border-color: var(--color-primary);
+    background-color: #221111;
+}
+
+.toppingInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.toppingName {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #eee;
+}
+
+.toppingPrice {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.toppingControls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qtyBtn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    border: 1px solid #444;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.qtyBtn:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.qtyBtn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.qtyDisplay {
+    font-weight: 900;
+    font-size: 1rem;
+    min-width: 14px;
+    text-align: center;
+    color: white;
+    font-family: var(--font-heading);
+}
+
+/* Right Column: Receipt */
+.rightCol {
+    padding: 2.5rem;
+    background-color: white;
+    /* Paper look? Or keep it dark? */
+    background-color: #DDDDDD;
+    /* Slightly off-white paper */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Paper torn effect top (optional, maybe later) */
+
+.receiptTitle {
+    font-family: 'Courier New', monospace;
+    font-weight: 800;
+    border-bottom: 2px dashed #999;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    letter-spacing: -1px;
+}
+
+.receiptItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+}
+
+.receiptDivider {
+    height: 2px;
+    border-bottom: 2px solid black;
+    margin: 1.5rem 0;
+}
+
+.receiptTotal {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+.confirmButton {
+    margin-top: auto;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 5px 5px 0px black;
+    transition: all 0.2s;
+}
+
+.confirmButton:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px black;
+}

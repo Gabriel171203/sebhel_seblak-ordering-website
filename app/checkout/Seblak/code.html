@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEBHEL - Seblak Rachel | Level Pedas Nagih</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c21e3a",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#201214",
+                        "card-dark": "#2a1a1c",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'neubrutal': '6px 6px 0px 0px #000',
+                        'neubrutal-primary': '6px 6px 0px 0px #c21e3a',
+                        'neubrutal-hover': '2px 2px 0px 0px #000',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .neubrutal-border {
+            border: 3px solid #000;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #2a1a1c;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c21e3a;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary selection:text-white">
+<!-- Floating Cart Pill -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-4 bg-primary text-white p-4 rounded-xl neubrutal-border shadow-neubrutal cursor-pointer hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neubrutal-hover transition-all">
+<span class="material-symbols-outlined">shopping_basket</span>
+<div class="flex flex-col leading-none">
+<span class="text-xs font-bold uppercase tracking-wider">Total Pesanan</span>
+<span class="text-lg font-bold">Rp 45.000</span>
+</div>
+<div class="bg-white text-primary px-2 py-1 rounded-md font-black text-sm">3</div>
+</div>
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Navigation -->
+<header class="sticky top-0 z-40 w-full border-b-4 border-black bg-background-light dark:bg-background-dark px-6 py-4 md:px-20">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 group cursor-pointer">
+<div class="bg-primary p-2 neubrutal-border rotate-[-3deg] group-hover:rotate-0 transition-transform">
+<span class="material-symbols-outlined text-white text-3xl font-bold">local_fire_department</span>
+</div>
+<h1 class="text-2xl font-black tracking-tighter italic">SEBHEL<span class="text-primary">.</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-bold uppercase text-sm tracking-widest">
+<a class="hover:text-primary transition-colors" href="#menu">Menu</a>
+<a class="hover:text-primary transition-colors" href="#customizer">Customizer</a>
+<a class="hover:text-primary transition-colors" href="#about">About Rachel</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex neubrutal-border bg-white dark:bg-card-dark px-3 py-1 items-center gap-2">
+<span class="material-symbols-outlined text-slate-500">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-medium w-32 md:w-48" placeholder="Cari topping..." type="text"/>
+</div>
+<button class="bg-primary text-white font-black px-6 py-2 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all uppercase text-sm tracking-tighter">
+                        Pesan Sekarang
+                    </button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative px-6 py-12 md:py-24 md:px-20 overflow-hidden">
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block bg-yellow-400 text-black px-3 py-1 font-black text-xs uppercase tracking-widest neubrutal-border mb-6 rotate-[-2deg]">Hot &amp; Spicy Specialist</span>
+<h1 class="text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 dark:text-white">
+                        LEVEL PEDAS YANG BIKIN <span class="text-primary italic">KANGEN,</span> BUKAN BIKIN DENDAM.
+                    </h1>
+<p class="text-lg md:text-xl font-medium mb-10 max-w-md dark:text-slate-300">
+                        Racik seblak impianmu dengan topping melimpah dan tingkat kepedasan yang pas di hati. Garansi ketagihan!
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white text-xl font-black px-8 py-4 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all flex items-center gap-3">
+                            Mulai Racik Seblakmu
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-white dark:bg-card-dark text-black dark:text-white text-xl font-black px-8 py-4 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all">
+                            Lihat Menu
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="relative z-10 w-full aspect-square bg-primary neubrutal-border shadow-[16px_16px_0px_0px_#000] overflow-hidden rotate-[3deg]">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-[1.2]" data-alt="Close up of a spicy bowl of Indonesian seblak" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHd3hPQWKCbCgjpRBuiknFDkSPb0YCg5FqVSkuTg87OoZMLFDS8-moej5DZQiSVGuSFtAq4gX27IqLKP9sgk96QGvIrCGgvSJg7Rx9liTQo5je8V4FhFc3Q7zhSihoTO7-0_a60ASQzldwQzMXM7vZrwGAv6Vmtz42pz0b3bwXr5iyEqD40AZ9TrZz7yd6tQTQlzhrBWtH8VDYUOUFlgCd7y4VOkZOfHWo5zPtrYY-0nsYIcwPu4G0wageBhfoPAut32L5up5uLQw"/>
+</div>
+<!-- Floating Decorations -->
+<div class="absolute -top-10 -right-10 w-24 h-24 bg-yellow-400 rounded-full neubrutal-border flex items-center justify-center rotate-12 z-20">
+<span class="material-symbols-outlined text-5xl text-black font-black">heat</span>
+</div>
+<div class="absolute -bottom-6 -left-10 w-32 h-32 bg-white dark:bg-card-dark neubrutal-border flex items-center justify-center -rotate-12 z-20 shadow-neubrutal">
+<p class="text-black dark:text-white font-black text-center leading-none">
+<span class="text-4xl">100%</span><br/>FRESH
+                        </p>
+</div>
+</div>
+</div>
+<!-- Wavy Divider -->
+<div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] transform translate-y-1">
+<svg class="relative block w-full h-[60px]" data-name="Layer 1" preserveaspectratio="none" viewbox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+<path class="text-background-light dark:text-background-dark transform rotate-180" d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V46.35C50.7,56.33,105.88,58.5,157.2,56.44Z" fill="currentColor"></path>
+</svg>
+</div>
+</section>
+<!-- Customizer Engine -->
+<section class="bg-primary dark:bg-primary py-20 px-6 md:px-20 text-white" id="customizer">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase italic">The Seblak Lab</h2>
+<p class="text-xl font-medium opacity-90">Eksperimen rasa seblak paling liar cuma di sini.</p>
+</div>
+<div class="bg-background-dark neubrutal-border p-8 md:p-12 shadow-[12px_12px_0px_0px_#000]">
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Spiciness Selector -->
+<div class="space-y-8">
+<div>
+<h3 class="text-2xl font-black mb-6 uppercase flex items-center gap-3">
+<span class="material-symbols-outlined text-yellow-400">thermostat</span>
+                                    Level Kepedasan
+                                </h3>
+<div class="flex items-end justify-between gap-1 mb-6 h-24">
+<!-- Dynamic Fire Icons visualization -->
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-yellow-400">local_fire_department</span>
+<div class="w-8 h-4 bg-yellow-400 neubrutal-border"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-3xl text-orange-400">local_fire_department</span>
+<div class="w-8 h-8 bg-orange-400 neubrutal-border"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl text-orange-500">local_fire_department</span>
+<div class="w-8 h-12 bg-orange-500 neubrutal-border"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-5xl text-primary animate-pulse">local_fire_department</span>
+<div class="w-8 h-16 bg-primary neubrutal-border"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-6xl text-primary animate-bounce">local_fire_department</span>
+<div class="w-8 h-20 bg-primary neubrutal-border"></div>
+</div>
+</div>
+<input class="w-full h-4 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-white border-2 border-black" max="10" min="1" type="range" value="7"/>
+<div class="flex justify-between mt-4 font-black text-sm uppercase tracking-widest">
+<span>Cupu (1)</span>
+<span class="text-yellow-400">MAMPUS (10)</span>
+</div>
+</div>
+<div>
+<h3 class="text-2xl font-black mb-6 uppercase flex items-center gap-3">
+<span class="material-symbols-outlined text-yellow-400">select_check_box</span>
+                                    Pilih Topping (Wajib 3)
+                                </h3>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center gap-3 bg-white/10 p-4 neubrutal-border cursor-pointer hover:bg-white/20 transition-colors">
+<input checked="" class="w-6 h-6 text-primary border-2 border-black focus:ring-0" type="checkbox"/>
+<span class="font-bold">Kerupuk Oren</span>
+</label>
+<label class="flex items-center gap-3 bg-white/10 p-4 neubrutal-border cursor-pointer hover:bg-white/20 transition-colors">
+<input checked="" class="w-6 h-6 text-primary border-2 border-black focus:ring-0" type="checkbox"/>
+<span class="font-bold">Makaroni</span>
+</label>
+<label class="flex items-center gap-3 bg-white/10 p-4 neubrutal-border cursor-pointer hover:bg-white/20 transition-colors">
+<input class="w-6 h-6 text-primary border-2 border-black focus:ring-0" type="checkbox"/>
+<span class="font-bold">Ceker Ayam</span>
+</label>
+<label class="flex items-center gap-3 bg-white/10 p-4 neubrutal-border cursor-pointer hover:bg-white/20 transition-colors">
+<input class="w-6 h-6 text-primary border-2 border-black focus:ring-0" type="checkbox"/>
+<span class="font-bold">Bakso Sapi</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="bg-white text-black p-8 neubrutal-border shadow-[8px_8px_0px_0px_#fbbf24]">
+<h4 class="text-xl font-black mb-6 border-b-4 border-black pb-2 uppercase italic tracking-tighter">Ringkasan Racikan</h4>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between font-bold">
+<span>Base Seblak (Level 7)</span>
+<span>Rp 15.000</span>
+</div>
+<div class="flex justify-between text-sm">
+<span>+ Kerupuk Oren</span>
+<span>Gratis</span>
+</div>
+<div class="flex justify-between text-sm">
+<span>+ Makaroni</span>
+<span>Gratis</span>
+</div>
+<div class="flex justify-between text-sm">
+<span>+ Bakso Sapi Extra</span>
+<span>Rp 5.000</span>
+</div>
+</div>
+<div class="flex justify-between items-center border-t-4 border-black pt-4 mb-8">
+<span class="text-2xl font-black uppercase tracking-tighter">Total</span>
+<span class="text-3xl font-black text-primary italic">Rp 20.000</span>
+</div>
+<button class="w-full bg-primary text-white font-black py-4 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all uppercase tracking-widest">
+                                Masukkan Keranjang
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Section -->
+<section class="py-20 px-6 md:px-20 bg-background-light dark:bg-background-dark" id="menu">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-4">Paket Seblak Juara</h2>
+<p class="text-lg font-medium opacity-70">Pilih paket praktis buat yang males mikir.</p>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+<span class="bg-primary text-white px-6 py-2 neubrutal-border font-black text-sm uppercase whitespace-nowrap cursor-pointer">Semua</span>
+<span class="bg-white dark:bg-card-dark px-6 py-2 neubrutal-border font-black text-sm uppercase whitespace-nowrap cursor-pointer">Pedas Mampus</span>
+<span class="bg-white dark:bg-card-dark px-6 py-2 neubrutal-border font-black text-sm uppercase whitespace-nowrap cursor-pointer">Minuman</span>
+<span class="bg-white dark:bg-card-dark px-6 py-2 neubrutal-border font-black text-sm uppercase whitespace-nowrap cursor-pointer">Cemilan</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-card-dark neubrutal-border shadow-neubrutal flex flex-col group overflow-hidden">
+<div class="relative h-64 overflow-hidden border-b-4 border-black">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Tasty Indonesian Seblak with various toppings in a ceramic bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4ZUYCfpCGZnCUvkxuWg-XoFTxnBiU_XIdgunbJ0f-JWLPvoiNsVWhBNyWSXbgO5jfgrKSxrazIOdvAmzjI2cbrieBI955MNm4DAh1PpMlURK_mgled2Y4L4nupH6hIDv86qNccEMBCtEKSM69DhrqdoIOe_xy0BY_-plAdUlOB1Q2PWdNnh0Nx4PHgGbUhHpx4Y7DqPk6HlsrPH9lvQtLg1rMCnHN2GzPRDckcOIiCJOuWPnv-__362xXtEWisRHfwVu-a3Wg8o4"/>
+<div class="absolute top-4 right-4 bg-primary text-white font-black px-3 py-1 neubrutal-border rotate-[5deg]">POPULER</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-2xl font-black mb-2 uppercase italic tracking-tighter">Paket Garang</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                                Isi: Kerupuk, Makaroni, Sosis, Bakso, Ceker, Telur, Sayur. Level pedas bebas pilih!
+                            </p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black italic text-primary">Rp 25.000</span>
+<button class="bg-primary text-white p-3 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-card-dark neubrutal-border shadow-neubrutal flex flex-col group overflow-hidden">
+<div class="relative h-64 overflow-hidden border-b-4 border-black">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional spicy noodles with broth and chili flakes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6S5aX-IgjKBasXAtaE6iuW6eVyDHN3WE0Qa3mKIBytwvOjySak5pZysMYOvDkyjt55qgqP9lfaArDHxu416EWV162aqmhBmay07o__h__mQlhxvyR7r3yQkfuJN7r4p2FzbXP1uuvz480kBr1mrudngG4mc1izTLjs7CJpWBBfo0ZAga7fUYGd_245VnjYGAkwP5tjBGRvf_qlYxztQFKHvUwvo2XL0hMO1zrT0NBtDACPapprICC7JqKA5X87vr4IFH7DwTf2W4"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-2xl font-black mb-2 uppercase italic tracking-tighter">Paket Nyantai</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                                Isi: Kerupuk, Cilok, Mie, Telur, Sayur. Cocok buat yang mau makan pedas tapi tetap beradab.
+                            </p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black italic text-primary">Rp 18.000</span>
+<button class="bg-primary text-white p-3 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-card-dark neubrutal-border shadow-neubrutal flex flex-col group overflow-hidden">
+<div class="relative h-64 overflow-hidden border-b-4 border-black">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Extra spicy seblak bowl with intense red broth and multiple chili peppers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRLIjFOOvsitYhdrQuOQjkUKiMdmEivObQcpLzbkvuaXNt7oD8suDOFkflqw0doSebfyeOQwlbcH1E2zgNYI1WEv3FWMWYITBNd6z3LO3fDU_PIcDFjKm-qqYu385upEgr3uGEBAvvtqFjZzv1Tkz6eguYtuwlOwv82wuqGPi7KWXk1DLs-ku-WfyWkAPy9gy-s3l5m1_VgO8kIuBuwM6APw7PVask8r6Z-aB4oAYgKwcXI-euAh2TOlpbJ0blbkb_6JAqduz9vCo"/>
+<div class="absolute top-4 right-4 bg-red-600 text-white font-black px-3 py-1 neubrutal-border rotate-[-5deg]">EXTREME</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-2xl font-black mb-2 uppercase italic tracking-tighter">Paket Lautan Api</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-1">
+                                Isi: Komplit + Tulang Rangu + Dumpling Cheese. Khusus pejuang pedas garis keras!
+                            </p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xl font-black italic text-primary">Rp 35.000</span>
+<button class="bg-primary text-white p-3 neubrutal-border shadow-neubrutal hover:shadow-neubrutal-hover hover:translate-x-[4px] hover:translate-y-[4px] transition-all">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Drinks & Toppings Small Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-3xl font-black mb-8 italic uppercase tracking-tighter">Toping Tambahan</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 neubrutal-border shadow-neubrutal">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-yellow-400 neubrutal-border flex items-center justify-center">
+<span class="material-symbols-outlined font-black">egg_alt</span>
+</div>
+<span class="font-black">Telur Puyuh (3 butir)</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-black text-primary italic">Rp 4.000</span>
+<button class="bg-black text-white px-3 py-1 neubrutal-border font-bold text-xs">ADD</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 neubrutal-border shadow-neubrutal">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/20 neubrutal-border flex items-center justify-center">
+<span class="material-symbols-outlined font-black">lunch_dining</span>
+</div>
+<span class="font-black">Dumpling Cheese</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-black text-primary italic">Rp 5.000</span>
+<button class="bg-black text-white px-3 py-1 neubrutal-border font-bold text-xs">ADD</button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="text-3xl font-black mb-8 italic uppercase tracking-tighter">Pereda Pedas</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 neubrutal-border shadow-neubrutal">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-blue-400 neubrutal-border flex items-center justify-center">
+<span class="material-symbols-outlined font-black">icecream</span>
+</div>
+<span class="font-black">Es Teh Manis Jumbo</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-black text-primary italic">Rp 6.000</span>
+<button class="bg-black text-white px-3 py-1 neubrutal-border font-bold text-xs">ADD</button>
+</div>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 neubrutal-border shadow-neubrutal">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-green-400 neubrutal-border flex items-center justify-center">
+<span class="material-symbols-outlined font-black">water_drop</span>
+</div>
+<span class="font-black">Es Jeruk Peras</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-black text-primary italic">Rp 8.000</span>
+<button class="bg-black text-white px-3 py-1 neubrutal-border font-bold text-xs">ADD</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section (Rachel) -->
+<section class="py-20 px-6 md:px-20 bg-yellow-400 border-y-4 border-black overflow-hidden relative" id="about">
+<!-- Background Decoration -->
+<div class="absolute top-10 right-10 opacity-10">
+<span class="material-symbols-outlined text-[300px] font-black">restaurant</span>
+</div>
+<div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+<div class="relative order-2 md:order-1">
+<div class="relative z-10 bg-white p-4 neubrutal-border shadow-[12px_12px_0px_0px_#000] rotate-[-2deg]">
+<img class="w-full h-[500px] object-cover filter contrast-125" data-alt="Portrait of a friendly smiling young Indonesian chef woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcwUqCnSovQDEEc4M_yILKAYXOIz5B4IvoigseNXpEmoOZNN-fFdA8E1hDW1yb9EcF2GzHS7u-UOVjtMjgA48gDzcbGoo2oGCy1MF31tO4t_2BlLl-bRrHmmmJmxZfjBYH4JLIFKUsA0Q_3gP1_cU1_XKpI_Yt8GW6ikQr89mEAfil7ZTWFtfRXDM3bbbmdKVfRtyJ5HLpn8B6TRGp4rKa6_bZOmtLIdHvPJqiDeSdzxvFR_1qhKDkfF-sLyYoul-XP6zEdYH9PJs"/>
+<div class="absolute -bottom-6 -right-6 bg-primary text-white p-4 neubrutal-border font-black rotate-[5deg] shadow-neubrutal">
+                            FOUNDER SEBHEL
+                        </div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="text-4xl md:text-6xl font-black mb-8 tracking-tighter uppercase italic leading-none">Kenalan Sama Rachel<span class="text-primary">.</span></h2>
+<div class="space-y-6 text-lg font-bold leading-relaxed text-slate-900">
+<p class="bg-white p-4 neubrutal-border">
+                            "Makan itu harus berkesan. Kalau belum keringetan dan pengen minum es teh 3 gelas, berarti belum makan seblak Rachel!"
+                        </p>
+<p>
+                            Rachel mulai jualan seblak dari garasi rumahnya di tahun 2021 karena bosen sama seblak yang pedasnya cuma bikin sakit perut tapi nggak ada rasanya. 
+                        </p>
+<p>
+                            Di SEBHEL, kami pakai kencur pilihan dan cabai segar yang diracik tiap subuh. Kami nggak pakai bubuk cabai murahan. Karena buat Rachel, kepuasan kamu adalah kunci sukses kami bisa buka cabang di bulan depan (Aamiin!).
+                        </p>
+<div class="pt-6 flex gap-6">
+<div class="flex flex-col">
+<span class="text-4xl font-black">50k+</span>
+<span class="text-xs uppercase font-black tracking-widest opacity-70">Mangkuk Terjual</span>
+</div>
+<div class="w-[2px] bg-black h-12"></div>
+<div class="flex flex-col">
+<span class="text-4xl font-black">12</span>
+<span class="text-xs uppercase font-black tracking-widest opacity-70">Variasi Topping</span>
+</div>
+<div class="w-[2px] bg-black h-12"></div>
+<div class="flex flex-col">
+<span class="text-4xl font-black">1</span>
+<span class="text-xs uppercase font-black tracking-widest opacity-70">Founder Gokil</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment & Footer -->
+<footer class="py-16 px-6 md:px-20 bg-background-dark text-white">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="md:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-primary p-2 neubrutal-border rotate-[-3deg]">
+<span class="material-symbols-outlined text-white text-3xl font-bold">local_fire_department</span>
+</div>
+<h2 class="text-3xl font-black tracking-tighter italic">SEBHEL<span class="text-primary">.</span></h2>
+</div>
+<p class="text-slate-400 max-w-sm mb-8 font-medium">
+                            Jagonya seblak kencur dengan level pedas yang memanusiakan manusia. Tersedia di GoFood, GrabFood, dan ShopeeFood.
+                        </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-white/10 neubrutal-border flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 bg-white/10 neubrutal-border flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">camera</span>
+</a>
+<a class="w-10 h-10 bg-white/10 neubrutal-border flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-black text-xl mb-6 uppercase tracking-tighter">Lokasi</h4>
+<ul class="space-y-4 text-slate-400 font-medium">
+<li>Jl. Pedas Nagih No. 42, Bandung</li>
+<li>Jl. Cabe Rawit No. 17, Jakarta</li>
+<li>Tersedia di Cloud Kitchen</li>
+</ul>
+</div>
+<div>
+<h4 class="font-black text-xl mb-6 uppercase tracking-tighter">Bantuan</h4>
+<ul class="space-y-4 text-slate-400 font-medium">
+<li><a class="hover:text-primary" href="#">Cara Pesan</a></li>
+<li><a class="hover:text-primary" href="#">Info Franchise</a></li>
+<li><a class="hover:text-primary" href="#">Kontak Rachel</a></li>
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t-4 border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="text-slate-500 font-bold uppercase tracking-widest text-xs">
+                        © 2024 SEBHEL Seblak Rachel. Made with chili.
+                    </p>
+<div class="flex flex-wrap justify-center gap-6 grayscale opacity-60">
+<!-- Simulated Payment Logos -->
+<div class="flex flex-col items-center">
+<span class="text-xs font-black mb-1">GoPay</span>
+<div class="h-6 w-12 bg-white/20 rounded"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-black mb-1">OVO</span>
+<div class="h-6 w-12 bg-white/20 rounded"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-black mb-1">DANA</span>
+<div class="h-6 w-12 bg-white/20 rounded"></div>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-xs font-black mb-1">QRIS</span>
+<div class="h-6 w-12 bg-white/20 rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

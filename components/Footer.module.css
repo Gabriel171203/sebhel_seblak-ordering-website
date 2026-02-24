@@ -1,0 +1,82 @@
+.footer {
+    background-color: #4D0000;
+    border-top: 3px solid #000;
+    padding: 4rem 0 2rem;
+    color: white;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .top {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        align-items: center;
+    }
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    color: #666;
+    font-style: italic;
+}
+
+.links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.links a {
+    color: #888;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    letter-spacing: 1px;
+}
+
+.links a:hover {
+    color: var(--color-primary);
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+@media (min-width: 768px) {
+    .bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.credit {
+    font-family: monospace;
+}
