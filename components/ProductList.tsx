@@ -7,6 +7,7 @@ import { useState } from 'react';
 import ProductModal from './ProductModal';
 import { useCart } from '@/context/CartContext';
 import ConfirmModal from './ConfirmModal';
+import PackageSelectorModal from './PackageSelectorModal';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -14,6 +15,7 @@ export default function ProductList() {
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [toppingToConfirm, setToppingToConfirm] = useState<Product | null>(null);
+    const [isChoosingPackage, setIsChoosingPackage] = useState(false);
     const { items, addToCart, addToppingToItem } = useCart();
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('q')?.toLowerCase() || '';
@@ -50,11 +52,31 @@ export default function ProductList() {
         if (product.customizable) {
             setSelectedProduct(product);
         } else if (product.category === 'Topping' && hasPackageInCart) {
-            // If it's a topping and there's at least one package, ask for confirmation
-            setToppingToConfirm(product);
+            // Find all packages
+            const packagesInCart = items.filter(item =>
+                products.find(p => p.id === item.id)?.category === 'Paket Seblak'
+            );
+
+            if (packagesInCart.length > 1) {
+                // Multiple packages, show selector
+                setToppingToConfirm(product);
+                setIsChoosingPackage(true);
+            } else {
+                // Single package, show simple confirm
+                setToppingToConfirm(product);
+                setIsChoosingPackage(false);
+            }
         } else {
             addToCart(product);
         }
+    };
+
+    const handleSelectPackage = (cartId: string) => {
+        if (toppingToConfirm) {
+            addToppingToItem(cartId, toppingToConfirm);
+        }
+        setToppingToConfirm(null);
+        setIsChoosingPackage(false);
     };
 
     const handleConfirmMerge = () => {
@@ -82,20 +104,7 @@ export default function ProductList() {
     return (
         <section id="menu" className={styles.section}>
             <div className={styles.container}>
-                <div className={styles.promoBanner} style={{
-                    backgroundColor: 'var(--color-primary)',
-                    color: 'white',
-                    padding: '1rem',
-                    textAlign: 'center',
-                    marginBottom: '2rem',
-                    fontWeight: 800,
-                    fontFamily: 'var(--font-heading)',
-                    fontSize: '1.2rem',
-                    border: '3px solid black',
-                    boxShadow: '8px 8px 0px black'
-                }}>
-                    🔥 PROMO JUMAT: GRATIS ES JERUK SETIAP PEMBELIAN 2 PORSI SEBLAK! 🔥
-                </div>
+
                 <h2 className={styles.heading}>MENU SEBHEL</h2>
                 <p className={styles.subheading}>Pilih paket pas di hati, gak perlu mikir.</p>
 
@@ -185,7 +194,7 @@ export default function ProductList() {
                 />
             )}
 
-            {toppingToConfirm && (
+            {toppingToConfirm && !isChoosingPackage && (
                 <ConfirmModal
                     title="Tambah ke Paket?"
                     message={`Mau masukkan ${toppingToConfirm.name} langsung ke dalam Paket Seblak kamu?`}
@@ -193,6 +202,18 @@ export default function ProductList() {
                     onCancel={handleDeclineMerge}
                     confirmText="ya, masukkan saja"
                     cancelText="batal"
+                />
+            )}
+
+            {toppingToConfirm && isChoosingPackage && (
+                <PackageSelectorModal
+                    toppingName={toppingToConfirm.name}
+                    packages={items.filter(item => products.find(p => p.id === item.id)?.category === 'Paket Seblak')}
+                    onSelect={handleSelectPackage}
+                    onCancel={() => {
+                        setToppingToConfirm(null);
+                        setIsChoosingPackage(false);
+                    }}
                 />
             )}
         </section>

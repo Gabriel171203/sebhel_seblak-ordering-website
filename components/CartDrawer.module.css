@@ -194,8 +194,8 @@
 
 .editBtn,
 .removeBtn {
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -308,4 +308,86 @@
     min-width: 24px;
     text-align: center;
     color: white;
+}
+
+/* Inline Topping Editor */
+.toppingToggle {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 4px 0;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+}
+
+.toppingToggle:hover {
+    text-decoration: underline;
+}
+
+.toppingEditor {
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border: 1px dashed rgba(255, 193, 7, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.toppingEditRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tinyToppingName {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+.tinyControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tinyBtn {
+    background: #000;
+    border: 1px solid #333;
+    color: white;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tinyBtn:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: black;
+}
+
+.tinyBtn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.tinyQty {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    min-width: 14px;
+    text-align: center;
 }

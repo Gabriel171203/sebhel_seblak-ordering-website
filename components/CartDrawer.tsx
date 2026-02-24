@@ -2,7 +2,7 @@
 
 import { useCart, CartItem } from '@/context/CartContext';
 import styles from './CartDrawer.module.css';
-import { X, Trash2, ArrowRight, Pencil, Plus, Minus } from 'lucide-react';
+import { X, Trash2, ArrowRight, Pencil, Plus, Minus, ChevronDown, ChevronUp } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ProductModal from './ProductModal';
@@ -14,20 +14,34 @@ type CartDrawerProps = {
 };
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
-    const { items, removeFromCart, updateQuantity, total } = useCart();
+    const { items, removeFromCart, updateQuantity, total, updateToppingQuantityInItem } = useCart();
     const [isVisible, setIsVisible] = useState(false);
     const [editingItem, setEditingItem] = useState<CartItem | null>(null);
+    const [expandedToppings, setExpandedToppings] = useState<string[]>([]);
 
     useEffect(() => {
         if (isOpen) {
             setIsVisible(true);
             document.body.style.overflow = 'hidden';
         } else {
-            const timer = setTimeout(() => setIsVisible(false), 300);
+            const timer = setTimeout(() => {
+                setIsVisible(false);
+                setExpandedToppings([]); // Reset on close
+            }, 300);
             document.body.style.overflow = 'unset';
             return () => clearTimeout(timer);
         }
     }, [isOpen]);
+
+    const toggleToppings = (cartId: string) => {
+        setExpandedToppings(prev =>
+            prev.includes(cartId)
+                ? prev.filter(id => id !== cartId)
+                : [...prev, cartId]
+        );
+    };
+
+    const availableToppings = products.filter(p => p.category === 'Topping');
 
     if (!isVisible && !isOpen) return null;
 
@@ -84,6 +98,47 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                     <div className={styles.itemPrice}>
                                         Rp {item.totalPrice.toLocaleString('id-ID')}
                                     </div>
+
+                                    {item.customizable && (
+                                        <button
+                                            className={styles.toppingToggle}
+                                            onClick={() => toggleToppings(item.cartId)}
+                                        >
+                                            Atur Topping {expandedToppings.includes(item.cartId) ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+                                        </button>
+                                    )}
+
+                                    {/* Expandable Topping List */}
+                                    {expandedToppings.includes(item.cartId) && (
+                                        <div className={styles.toppingEditor}>
+                                            {availableToppings.map(topping => {
+                                                const selected = item.selectedToppings?.find(t => t.id === topping.id);
+                                                const quantity = selected?.quantity || 0;
+
+                                                return (
+                                                    <div key={topping.id} className={styles.toppingEditRow}>
+                                                        <span className={styles.tinyToppingName}>{topping.name}</span>
+                                                        <div className={styles.tinyControls}>
+                                                            <button
+                                                                className={styles.tinyBtn}
+                                                                onClick={() => updateToppingQuantityInItem(item.cartId, topping.id, -1)}
+                                                                disabled={quantity === 0}
+                                                            >
+                                                                <Minus size={10} />
+                                                            </button>
+                                                            <span className={styles.tinyQty}>{quantity}</span>
+                                                            <button
+                                                                className={styles.tinyBtn}
+                                                                onClick={() => updateToppingQuantityInItem(item.cartId, topping.id, 1)}
+                                                            >
+                                                                <Plus size={10} />
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className={styles.itemActions}>

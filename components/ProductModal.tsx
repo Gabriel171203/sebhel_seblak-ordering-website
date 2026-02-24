@@ -170,6 +170,9 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                                             key={topping.id}
                                             className={`${styles.toppingItem} ${quantity > 0 ? styles.activeTopping : ''}`}
                                         >
+                                            <div className={styles.toppingVisual}>
+                                                <img src={topping.image} alt={topping.name} className={styles.toppingImg} />
+                                            </div>
                                             <div className={styles.toppingInfo}>
                                                 <span className={styles.toppingName}>{topping.name}</span>
                                                 <span className={styles.toppingPrice}>Rp {topping.price.toLocaleString('id-ID')}</span>

@@ -1,0 +1,124 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+    backdrop-filter: blur(8px);
+}
+
+.modal {
+    background-color: #1a0908;
+    width: 90%;
+    max-width: 400px;
+    border: 2px solid var(--color-primary);
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+}
+
+.packageList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.packageItem {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+    color: white;
+}
+
+.packageItem:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: var(--color-primary);
+    transform: translateX(5px);
+}
+
+.packageIcon {
+    background-color: var(--color-primary);
+    color: black;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.packageInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.packageName {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.packageMeta {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+}
+
+.chevron {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+}
+
+.cancelBtn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.cancelBtn:hover {
+    color: white;
+}

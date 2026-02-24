@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { Product } from '@/data/products';
+import { Product, products } from '@/data/products';
 
 export type SelectedTopping = {
     id: string;
@@ -30,6 +30,7 @@ type CartContextType = {
     addToCart: (product: Product, options?: CartOptions) => void;
     updateCartItem: (cartId: string, options: { spiciness: number; toppings: SelectedTopping[]; spicinessCost: number }) => void;
     updateQuantity: (cartId: string, delta: number) => void;
+    updateToppingQuantityInItem: (cartId: string, toppingId: string, delta: number) => void;
     addToppingToItem: (cartId: string, topping: Product) => void;
     removeFromCart: (cartId: string) => void;
     clearCart: () => void;
@@ -146,12 +147,50 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }));
     };
 
+    const updateToppingQuantityInItem = (cartId: string, toppingId: string, delta: number) => {
+        setItems(items.map(item => {
+            if (item.cartId !== cartId) return item;
+
+            const currentToppings = item.selectedToppings || [];
+            const toppingIndex = currentToppings.findIndex(t => t.id === toppingId);
+
+            if (toppingIndex === -1 && delta <= 0) return item;
+
+            let newToppings = [...currentToppings];
+            let priceChange = 0;
+
+            if (toppingIndex > -1) {
+                const topping = currentToppings[toppingIndex];
+                const newQuantity = Math.max(0, topping.quantity + delta);
+                priceChange = (newQuantity - topping.quantity) * topping.price;
+
+                if (newQuantity === 0) {
+                    newToppings.splice(toppingIndex, 1);
+                } else {
+                    newToppings[toppingIndex] = { ...topping, quantity: newQuantity };
+                }
+            } else if (delta > 0) {
+                const toppingProduct = products.find(p => p.id === toppingId);
+                if (toppingProduct) {
+                    newToppings.push({ id: toppingProduct.id, name: toppingProduct.name, price: toppingProduct.price, quantity: 1 });
+                    priceChange = toppingProduct.price;
+                }
+            }
+
+            return {
+                ...item,
+                selectedToppings: newToppings,
+                totalPrice: item.totalPrice + (priceChange * item.quantity)
+            };
+        }));
+    };
+
     const clearCart = () => {
         setItems([]);
     };
 
     return (
-        <CartContext.Provider value={{ items, addToCart, updateCartItem, updateQuantity, addToppingToItem, removeFromCart, clearCart, total }}>
+        <CartContext.Provider value={{ items, addToCart, updateCartItem, updateQuantity, updateToppingQuantityInItem, addToppingToItem, removeFromCart, clearCart, total }}>
             {children}
         </CartContext.Provider>
     );

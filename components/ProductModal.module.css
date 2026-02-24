@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
+    z-index: 3000;
     backdrop-filter: blur(8px);
 }
 
@@ -174,12 +174,27 @@
 
 .toppingItem {
     display: flex;
-    justify-content: space-between;
+    gap: 0.8rem;
     align-items: center;
-    padding: 12px;
+    padding: 8px;
     background-color: #1a1a1a;
     border: 1px solid #333;
     transition: all 0.2s;
+}
+
+.toppingVisual {
+    width: 45px;
+    height: 45px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #333;
+}
+
+.toppingImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .activeTopping {

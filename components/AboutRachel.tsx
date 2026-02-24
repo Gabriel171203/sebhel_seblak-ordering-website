@@ -12,7 +12,7 @@ export default function AboutRachel() {
                         <div className={styles.imageWrapper}>
                             {/* Placeholder for Rachel's Image - User can replace src later */}
                             <div className={styles.placeholderImage}>
-                                <img src="/images/products/owner.jpeg" alt="Rachel" className={styles.ownerImage} />
+                                <img src="/images/products/owner2.jpeg" alt="Rachel" className={styles.ownerImage} />
                             </div>
                             <div className={styles.frameEffect}></div>
                         </div>
@@ -55,7 +55,7 @@ export default function AboutRachel() {
                                 <span className={styles.statLabel}>PELANGGAN PUAS</span>
                             </div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNum}>∞</span>
+                                <span className={styles.statNum}>8</span>
                                 <span className={styles.statLabel}>LEVEL PEDAS</span>
                             </div>
                         </div>

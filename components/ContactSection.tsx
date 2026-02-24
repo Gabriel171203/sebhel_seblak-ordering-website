@@ -18,8 +18,8 @@ export default function ContactSection() {
                             <div className={styles.infoItem}>
                                 <MapPin className={styles.icon} />
                                 <div>
-                                    <h4 className={styles.infoLabel}>ALAMAT PENGIRIMAN</h4>
-                                    <p>Sekitar Universitas Advent Indonesia<br />(Asrama Boys/Girls)</p>
+                                    <h4 className={styles.infoLabel}></h4>
+                                    <p>Siap mengantarkan ke:<br />(Asrama Boys/Girls)<br />Kost/Rumah sekitar UNAI</p>
                                 </div>
                             </div   >
 
