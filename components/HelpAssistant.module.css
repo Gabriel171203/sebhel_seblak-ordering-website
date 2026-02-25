@@ -1,0 +1,275 @@
+.wrapper {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1500;
+}
+
+.floatingBtn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    height: 56px;
+    padding: 0 1.5rem;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(211, 47, 47, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.floatingBtn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 32px rgba(211, 47, 47, 0.6);
+}
+
+.mascotBadge {
+    font-size: 1.5rem;
+    animation: wiggle 2s infinite;
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(15deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.5);
+}
+
+/* Panel */
+.panel {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    background-color: #0d0d0d;
+    border: 2px solid var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 1);
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.panelOpen {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+.header {
+    background: linear-gradient(135deg, #1a0505 0%, #0d0d0d 100%);
+    padding: 1.5rem;
+    border-bottom: 2px dashed #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headerEmoji {
+    font-size: 1.8rem;
+}
+
+.headerTitle h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.headerTitle p {
+    color: #666;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin: 0;
+}
+
+.closeBtn {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    color: #888;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.closeBtn:hover {
+    color: white;
+    border-color: #eee;
+}
+
+.content {
+    padding: 1.5rem;
+}
+
+.intro {
+    color: #aaa;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.topicList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.topicItem {
+    background-color: #151515;
+    border: 1px solid #222;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: default;
+    transition: all 0.2s;
+}
+
+.topicItem:hover {
+    border-color: #444;
+    background-color: #1a1a1a;
+}
+
+.topicIcon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.topicInfo h4 {
+    color: white;
+    font-size: 0.9rem;
+    margin: 0 0 2px 0;
+}
+
+.topicInfo p {
+    color: #666;
+    font-size: 0.75rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.topicLink a {
+    text-decoration: none;
+    display: block;
+}
+
+.topicLink h4 {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    margin: 0 0 2px 0;
+    text-decoration: underline;
+}
+
+.topicLink p {
+    color: #666;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.chevron {
+    color: #333;
+    margin-left: auto;
+}
+
+.footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #222;
+}
+
+.tutorialBtn {
+    width: 100%;
+    background: none;
+    border: 1px dashed #444;
+    color: #666;
+    padding: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tutorialBtn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.backdrop {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .panel {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: none;
+        box-shadow: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+        transform: translateY(100%);
+    }
+
+    .panelOpen {
+        transform: translateY(0);
+    }
+
+    .backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+    }
+
+    .btnText {
+        display: none;
+    }
+
+    .floatingBtn {
+        width: 56px;
+        padding: 0;
+        justify-content: center;
+    }
+}

@@ -103,6 +103,20 @@
     line-height: 1;
 }
 
+@media (max-width: 480px) {
+    .productTitle {
+        font-size: 1.6rem;
+    }
+
+    .modalHero {
+        height: 180px;
+    }
+
+    .modalHeroOverlay {
+        padding: 1rem;
+    }
+}
+
 .description {
     color: #888;
     margin-bottom: 0;
@@ -111,7 +125,15 @@
 
 /* Add padding back to sections below hero */
 .section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 0 1rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 .sectionTitle {
@@ -126,11 +148,17 @@
 
 .spicinessOptions {
     display: flex;
-    gap: 1rem;
-    height: 100px;
-    /* Bar chart height */
+    gap: 0.5rem;
+    height: 80px;
     align-items: flex-end;
     margin-bottom: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .spicinessOptions {
+        gap: 0.3rem;
+        height: 60px;
+    }
 }
 
 .levelBtn {
@@ -169,7 +197,13 @@
 .toppingsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.8rem;
+}
+
+@media (max-width: 600px) {
+    .toppingsGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .toppingItem {
@@ -259,14 +293,18 @@
 /* Right Column: Receipt */
 .rightCol {
     padding: 2.5rem;
-    background-color: white;
-    /* Paper look? Or keep it dark? */
     background-color: #DDDDDD;
-    /* Slightly off-white paper */
     color: black;
     display: flex;
     flex-direction: column;
     position: relative;
+    border-top: 2px dashed #999;
+}
+
+@media (max-width: 480px) {
+    .rightCol {
+        padding: 1.5rem;
+    }
 }
 
 /* Paper torn effect top (optional, maybe later) */
