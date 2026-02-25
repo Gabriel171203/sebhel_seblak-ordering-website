@@ -40,7 +40,7 @@ export default function AboutRachel() {
                         <div className={styles.quoteBox}>
                             <Quote size={32} className={styles.quoteIcon} />
                             <p className={styles.quoteText}>
-                                Kalau ga pedes, mending makan bubur ayam aja. Hidup butuh tantangan, Bestie!
+                                "Zaman makin canggih, sekarang cukup klik klik klik aja SEBLAKK otw ke depan mata"
                             </p>
                             <span className={styles.signature}>- Rachel, 2026</span>
                         </div>
