@@ -2,7 +2,7 @@
 
 import { useCart, CartItem } from '@/context/CartContext';
 import styles from './CartDrawer.module.css';
-import { X, Trash2, ArrowRight, Pencil, Plus, Minus, ChevronDown, ChevronUp } from 'lucide-react';
+import { X, Trash2, ArrowRight, Pencil, Plus, Minus, ChevronDown, ChevronUp, PlusCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import ProductModal from './ProductModal';
@@ -188,9 +188,22 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                             <span>Subtotal</span>
                             <span className={styles.totalAmount}>Rp {total.toLocaleString('id-ID')}</span>
                         </div>
-                        <Link href="/checkout" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
-                            Checkout <ArrowRight size={18} />
-                        </Link>
+                        <div className={styles.footerActions}>
+                            <button className={styles.addMoreBtn} onClick={() => {
+                                onClose();
+                                const menuSection = document.getElementById('menu');
+                                if (menuSection) {
+                                    menuSection.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                    window.location.href = '/#menu';
+                                }
+                            }}>
+                                <PlusCircle size={18} /> Tambah Pesanan
+                            </button>
+                            <Link href="/checkout" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+                                Checkout <ArrowRight size={18} />
+                            </Link>
+                        </div>
                     </div>
                 )}
             </div>

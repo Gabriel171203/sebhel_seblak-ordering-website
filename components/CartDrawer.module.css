@@ -391,3 +391,41 @@
     min-width: 14px;
     text-align: center;
 }
+
+.footerActions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.addMoreBtn {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 12px;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 4px 4px 0px #000;
+    border-radius: 0;
+}
+
+.addMoreBtn:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.addMoreBtn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px #000;
+}

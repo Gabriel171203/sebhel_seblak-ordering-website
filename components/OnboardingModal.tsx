@@ -16,14 +16,14 @@ const steps = [
     {
         icon: "🧪",
         title: "THE SEBLAK LAB",
-        description: "Klik menu manapun untuk masuk Lab. Racik level pedasmu (0-8) dan tumpuk topping sesukamu!",
+        description: "Pilih paket favoritmu untuk masuk ke Lab. Atur level pedas (0-8) dan tambahkan toping pilihanmu di sini!",
         tag: "KREASI TANPA BATAS",
     },
     {
         icon: "🛒",
-        title: "KONTROL PENUH",
-        description: "Buka keranjang untuk atur jumlah topping secara langsung. Gak perlu balik ke Lab lagi!",
-        tag: "SMART CART",
+        title: "TOPING TAMBAHAN",
+        description: "Mau nambah toping dari menu? Masukkan minimal 1 paket ke keranjang dulu ya, baru semua toping akan terbuka!",
+        tag: "INFO PENTING",
     },
     {
         icon: "🔥",

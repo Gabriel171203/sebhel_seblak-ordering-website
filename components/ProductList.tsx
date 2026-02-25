@@ -3,7 +3,7 @@
 import { products, Product } from '@/data/products';
 import styles from './ProductList.module.css';
 import { Plus, Lock } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProductModal from './ProductModal';
 import { useCart } from '@/context/CartContext';
 import ConfirmModal from './ConfirmModal';
@@ -16,9 +16,14 @@ export default function ProductList() {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
     const [toppingToConfirm, setToppingToConfirm] = useState<Product | null>(null);
     const [isChoosingPackage, setIsChoosingPackage] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const { items, addToCart, addToppingToItem } = useCart();
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get('q')?.toLowerCase() || '';
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const hasPackageInCart = items.some(item =>
         products.find(p => p.id === item.id)?.category === 'Paket Seblak'
@@ -127,7 +132,11 @@ export default function ProductList() {
                 <div className={styles.grid}>
                     {filteredProducts.length > 0 ? (
                         filteredProducts.map(product => {
-                            const isLocked = product.category === 'Topping' && !hasPackageInCart;
+                            // During hydration, hasPackageInCart is false (items=[])
+                            // So isLocked will be true for toppings.
+                            // We use 'mounted' to ensure the client render matches this initial state,
+                            // then updates correctly once loaded.
+                            const isLocked = mounted && product.category === 'Topping' && !hasPackageInCart;
 
                             return (
                                 <div
@@ -150,6 +159,7 @@ export default function ProductList() {
                                             <div className={styles.lockedOverlay}>
                                                 <Lock size={32} className={styles.lockIcon} />
                                                 <span className={styles.lockedText}>PILIH PAKET DULU</span>
+                                                <span className={styles.lockedHint}>Toping hanya bisa dipesan setelah ada Paket Seblak di keranjang.</span>
                                             </div>
                                         )}
                                     </div>

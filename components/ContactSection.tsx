@@ -1,5 +1,6 @@
 import styles from './ContactSection.module.css';
-import { MapPin, Phone, Instagram, Clock } from 'lucide-react';
+import { MapPin, Phone, Instagram, Clock, Send, MessageSquareText } from 'lucide-react';
+import React from 'react';
 
 export default function ContactSection() {
     return (
@@ -81,20 +82,49 @@ export default function ContactSection() {
                         </div>
                     </div>
 
-                    {/* Map Placeholder */}
-                    <div className={styles.mapCol}>
-                        <div className={styles.mapFrame}>
+                    {/* Feedback Form */}
+                    <div className={styles.feedbackCol}>
+                        <div className={styles.feedbackCard}>
+                            <h3 className={styles.cardTitle}>KRITIK & SARAN</h3>
+                            <p className={styles.feedbackIntro}>Punya masukan buat website ini atau layanan kami? Langsung lapor ke developer ya!</p>
+
+                            <form className={styles.feedbackForm} onSubmit={(e) => {
+                                e.preventDefault();
+                                const formData = new FormData(e.currentTarget);
+                                const message = formData.get('message') as string;
+                                const waUrl = `https://wa.me/6282113446751?text=${encodeURIComponent(`[FEEDBACK SEBHEL]\n\n${message}`)}`;
+                                window.open(waUrl, '_blank');
+                            }}>
+                                <div className={styles.inputGroup}>
+                                    <textarea
+                                        name="message"
+                                        className={styles.textarea}
+                                        placeholder="Tulis kritik atau saran kamu di sini..."
+                                        required
+                                    ></textarea>
+                                </div>
+                                <button type="submit" className={styles.submitBtn}>
+                                    KIRIM KE WHATSAPP <Send size={18} />
+                                </button>
+                            </form>
+
+                            <div className={styles.devNote}>
+                                <MessageSquareText size={16} />
+                                <span>Pesanmu akan langsung diteruskan ke WhatsApp Developer.</span>
+                            </div>
+                        </div>
+
+                        {/* Smaller Map */}
+                        <div className={styles.miniMap}>
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.57311705249023!3d-6.903444341687889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Bandung%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1708405000000!5m2!1sen!2sid"
                                 width="100%"
-                                height="100%"
+                                height="150"
                                 style={{ border: 0 }}
                                 allowFullScreen={true}
                                 loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
                                 className={styles.map}
                             ></iframe>
-                            <div className={styles.mapOverlay}></div>
                         </div>
                     </div>
                 </div>

@@ -2,24 +2,34 @@
 
 import React, { useState } from 'react';
 import styles from './HelpAssistant.module.css';
-import { HelpCircle, X, ChevronRight, MessageSquare, Info, Smartphone } from 'lucide-react';
+import { HelpCircle, X, ChevronRight, MessageSquare, Info, Smartphone, PlusCircle, MessageSquareText } from 'lucide-react';
 
 const helpTopics = [
     {
         icon: <Info size={18} />,
         title: "Cara Order",
-        description: "Pilih paket seblak, masuk Lab untuk kustomisasi, lalu checkout!"
+        description: "Pilih paket seblak, kustomisasi di Lab, lalu checkout!"
+    },
+    {
+        icon: <PlusCircle size={18} />,
+        title: "Syarat Topping",
+        description: "Topping butuh wadah! Pilih minimal 1 paket dulu ke keranjang."
+    },
+    {
+        icon: <MessageSquareText size={18} />,
+        title: "Kritik & Saran",
+        description: "Punya masukan? Kirim kritik/saran langsung ke developer!"
     },
     {
         icon: <Smartphone size={18} />,
         title: "Kustomisasi (Lab)",
-        description: "Pilih level pedas 0-8. Makin tinggi angkanya, makin membara!"
+        description: "Pilih level pedas 0-8. Makin tinggi, makin membara!"
     },
     {
         icon: <MessageSquare size={18} />,
         title: "Bantuan WhatsApp",
-        description: "Butuh bantuan langsung? Admin Rachel siap di WA!",
-        link: "https://wa.me/628123456789" // Placeholder
+        description: "Butuh bantuan? Admin Rachel siap di WA!",
+        link: "https://wa.me/628123456789"
     }
 ];
 
@@ -35,6 +45,15 @@ export default function HelpAssistant({ onOpenTutorial }: HelpAssistantProps) {
 
         if (topic.title === "Cara Order") {
             onOpenTutorial(0);
+        } else if (topic.title === "Syarat Topping") {
+            onOpenTutorial(2);
+        } else if (topic.title === "Kritik & Saran") {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                window.location.href = '/#contact';
+            }
         } else if (topic.title === "Kustomisasi (Lab)") {
             onOpenTutorial(1);
         }
