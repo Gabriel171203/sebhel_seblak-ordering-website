@@ -92,7 +92,7 @@ export default function ContactSection() {
                                 e.preventDefault();
                                 const formData = new FormData(e.currentTarget);
                                 const message = formData.get('message') as string;
-                                const waUrl = `https://wa.me/6282113446751?text=${encodeURIComponent(`[FEEDBACK SEBHEL]\n\n${message}`)}`;
+                                const waUrl = `https://wa.me/6288804007562?text=${encodeURIComponent(`[FEEDBACK SEBHEL]\n\n${message}`)}`;
                                 window.open(waUrl, '_blank');
                             }}>
                                 <div className={styles.inputGroup}>
