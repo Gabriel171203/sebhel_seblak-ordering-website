@@ -15,7 +15,7 @@ export const products: Product[] = [
         name: 'Paket Basic',
         description: 'Kerupuk mawar, kerupuk kemplang, mie.',
         price: 10000,
-        image: '/images/products/seblakbasic.jpg',
+        image: '/images/products/seblakbasic.jpeg',
         category: 'Paket Seblak',
         customizable: true,
     },

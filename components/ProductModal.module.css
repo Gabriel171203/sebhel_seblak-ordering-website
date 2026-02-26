@@ -121,6 +121,203 @@
     color: #888;
     margin-bottom: 0;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Spiciness Visual Effects */
+.spicinessBaseLayer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.effectWarm {
+    background: radial-gradient(circle at center, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+    box-shadow: inset 0 0 50px rgba(255, 193, 7, 0.2);
+}
+
+.effectHot {
+    background: radial-gradient(circle at center, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+    box-shadow: inset 0 0 80px rgba(255, 107, 107, 0.4);
+    animation: heatHaze 2s infinite alternate ease-in-out;
+}
+
+.effectInferno {
+    background: radial-gradient(circle at center, rgba(211, 47, 47, 0.3) 0%, transparent 60%);
+    box-shadow: inset 0 0 120px rgba(211, 47, 47, 0.6);
+    animation: infernoPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes heatHaze {
+    from {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.02);
+        filter: blur(1px);
+    }
+}
+
+@keyframes infernoPulse {
+    from {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 1;
+        box-shadow: inset 0 0 150px rgba(255, 0, 0, 0.8);
+    }
+}
+
+.fireContainer,
+.emberContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.fireParticle {
+    position: absolute;
+    bottom: -10px;
+    width: 30px;
+    height: 30px;
+    background: var(--color-primary);
+    filter: blur(10px);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: fireRise 2s infinite ease-out;
+}
+
+@keyframes fireRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-200px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.ember {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #FFC107;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FFC107;
+    bottom: 0;
+    animation: emberFloat var(--d) infinite ease-out;
+    left: var(--l);
+}
+
+@keyframes emberFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-300px) translateX(var(--x));
+        opacity: 0;
+    }
+}
+
+/* Dynamically positioned particles */
+.fireParticle:nth-child(2n) {
+    left: 10%;
+    animation-delay: 0.2s;
+    background: #ff6b6b;
+}
+
+.fireParticle:nth-child(3n) {
+    left: 30%;
+    animation-delay: 0.5s;
+    background: #FFC107;
+}
+
+.fireParticle:nth-child(4n) {
+    left: 50%;
+    animation-delay: 0.1s;
+    background: #ff0000;
+}
+
+.fireParticle:nth-child(5n) {
+    left: 70%;
+    animation-delay: 0.8s;
+    background: #ff6b6b;
+}
+
+.fireParticle:nth-child(6n) {
+    left: 90%;
+    animation-delay: 0.3s;
+    background: #FFC107;
+}
+
+.ember:nth-child(odd) {
+    --l: 20%;
+    --d: 3s;
+    --x: 30px;
+}
+
+.ember:nth-child(even) {
+    --l: 40%;
+    --d: 4s;
+    --x: -20px;
+}
+
+.ember:nth-child(3n) {
+    --l: 60%;
+    --d: 2.5s;
+    --x: 50px;
+}
+
+.ember:nth-child(4n) {
+    --l: 80%;
+    --d: 5s;
+    --x: -40px;
+}
+
+.shakeEffect {
+    animation: subtleShake 0.15s infinite alternate;
+}
+
+@keyframes subtleShake {
+    from {
+        transform: translateX(-1px);
+    }
+
+    to {
+        transform: translateX(1px);
+    }
+}
+
+.titleFlame {
+    margin-left: 10px;
+    animation: flicker 0.1s infinite alternate;
+    vertical-align: middle;
+}
+
+@keyframes flicker {
+    from {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.1);
+    }
 }
 
 /* Add padding back to sections below hero */

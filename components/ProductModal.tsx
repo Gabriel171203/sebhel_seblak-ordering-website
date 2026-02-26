@@ -106,12 +106,40 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                                     (e.target as HTMLImageElement).src = 'https://placehold.co/600x400/1a1a1a/ffffff?text=Seblak+Juara';
                                 }}
                             />
-                            <div className={styles.modalHeroOverlay}>
+                            <div className={`${styles.modalHeroOverlay} ${spiciness > 5 ? styles.shakeEffect : ''}`}>
+                                {/* Spiciness Visual Effects layers */}
+                                {spiciness > 0 && (
+                                    <div className={`${styles.spicinessBaseLayer} ${spiciness <= 3 ? styles.effectWarm :
+                                            spiciness <= 5 ? styles.effectHot :
+                                                styles.effectInferno
+                                        }`}>
+                                        {/* Fire particles for high levels */}
+                                        {spiciness > 3 && (
+                                            <div className={styles.fireContainer}>
+                                                {[...Array(spiciness * 2)].map((_, i) => (
+                                                    <div key={i} className={styles.fireParticle} />
+                                                ))}
+                                            </div>
+                                        )}
+                                        {/* Embers for mid-high levels */}
+                                        {spiciness > 5 && (
+                                            <div className={styles.emberContainer}>
+                                                {[...Array(15)].map((_, i) => (
+                                                    <div key={i} className={styles.ember} />
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+
                                 <div className={styles.labHeader}>
                                     <Beaker size={20} className={styles.labIcon} />
                                     <span className={styles.labTitle}>THE SEBLAK LAB</span>
                                 </div>
-                                <h2 className={styles.productTitle}>{product.name}</h2>
+                                <h2 className={styles.productTitle}>
+                                    {product.name}
+                                    {spiciness > 5 && <Flame size={24} className={styles.titleFlame} fill="#D32F2F" />}
+                                </h2>
                                 <p className={styles.description}>Eksperimen rasa seblak paling liar cuma di sini.</p>
                             </div>
                         </div>
