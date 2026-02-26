@@ -187,25 +187,37 @@
 
 .fireParticle {
     position: absolute;
-    bottom: -10px;
-    width: 30px;
-    height: 30px;
-    background: var(--color-primary);
-    filter: blur(10px);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: fireRise 2s infinite ease-out;
+    bottom: -20px;
+    width: 40px;
+    height: 60px;
+    background: radial-gradient(ellipse at bottom, #FFF700 0%, #FFC107 15%, #ff3d00 40%, rgba(255, 0, 0, 0) 80%);
+    filter: blur(8px);
+    border-radius: 50% 50% 20% 20%;
+    opacity: 0;
+    animation: fireRise var(--d) infinite ease-in;
+    transform-origin: bottom center;
+    left: var(--l);
 }
 
 @keyframes fireRise {
     0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
         opacity: 0.8;
     }
 
+    50% {
+        transform: translateY(-100px) scale(1.2) rotate(var(--r));
+        filter: blur(4px);
+    }
+
     100% {
-        transform: translateY(-200px) scale(0.5);
+        transform: translateY(-250px) scale(0.2) rotate(calc(var(--r) * 2));
         opacity: 0;
+        filter: blur(12px);
     }
 }
 
@@ -233,35 +245,101 @@
     }
 }
 
-/* Dynamically positioned particles */
-.fireParticle:nth-child(2n) {
-    left: 10%;
-    animation-delay: 0.2s;
-    background: #ff6b6b;
+/* High-fidelity flame variance */
+.fireParticle:nth-child(1) {
+    --l: 5%;
+    --d: 1.2s;
+    --r: -15deg;
 }
 
-.fireParticle:nth-child(3n) {
-    left: 30%;
-    animation-delay: 0.5s;
-    background: #FFC107;
+.fireParticle:nth-child(2) {
+    --l: 15%;
+    --d: 1.8s;
+    --r: 10deg;
 }
 
-.fireParticle:nth-child(4n) {
-    left: 50%;
-    animation-delay: 0.1s;
-    background: #ff0000;
+.fireParticle:nth-child(3) {
+    --l: 25%;
+    --d: 1.5s;
+    --r: -5deg;
 }
 
-.fireParticle:nth-child(5n) {
-    left: 70%;
-    animation-delay: 0.8s;
-    background: #ff6b6b;
+.fireParticle:nth-child(4) {
+    --l: 35%;
+    --d: 2.1s;
+    --r: 20deg;
 }
 
-.fireParticle:nth-child(6n) {
-    left: 90%;
-    animation-delay: 0.3s;
-    background: #FFC107;
+.fireParticle:nth-child(5) {
+    --l: 45%;
+    --d: 1.4s;
+    --r: -10deg;
+}
+
+.fireParticle:nth-child(6) {
+    --l: 55%;
+    --d: 1.9s;
+    --r: 5deg;
+}
+
+.fireParticle:nth-child(7) {
+    --l: 65%;
+    --d: 1.6s;
+    --r: -20deg;
+}
+
+.fireParticle:nth-child(8) {
+    --l: 75%;
+    --d: 2.3s;
+    --r: 15deg;
+}
+
+.fireParticle:nth-child(9) {
+    --l: 85%;
+    --d: 1.3s;
+    --r: -8deg;
+}
+
+.fireParticle:nth-child(10) {
+    --l: 95%;
+    --d: 2.0s;
+    --r: 12deg;
+}
+
+.fireParticle:nth-child(11) {
+    --l: 10%;
+    --d: 1.7s;
+    --r: -18deg;
+}
+
+.fireParticle:nth-child(12) {
+    --l: 30%;
+    --d: 2.2s;
+    --r: 25deg;
+}
+
+.fireParticle:nth-child(13) {
+    --l: 50%;
+    --d: 1.4s;
+    --r: -12deg;
+}
+
+.fireParticle:nth-child(14) {
+    --l: 70%;
+    --d: 1.9s;
+    --r: 8deg;
+}
+
+.fireParticle:nth-child(15) {
+    --l: 90%;
+    --d: 1.5s;
+    --r: -15deg;
+}
+
+.fireParticle:nth-child(16) {
+    --l: 20%;
+    --d: 2.5s;
+    --r: 10deg;
 }
 
 .ember:nth-child(odd) {
