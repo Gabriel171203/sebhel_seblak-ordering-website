@@ -82,7 +82,8 @@ export default function CheckoutPage() {
                 ? `\n  Topping: ${item.selectedToppings.map(t => `${t.name} (x${t.quantity})`).join(', ')}`
                 : '';
             const level = item.spicinessLevel !== undefined ? ` (Level ${item.spicinessLevel})` : '';
-            return `- ${item.name}${level}: Rp ${item.totalPrice.toLocaleString('id-ID')}${toppings}`;
+            const bonus = item.bonusDrink ? `\n  🎁 Bonus Minuman: ${item.bonusDrink}` : '';
+            return `- ${item.name}${level}: Rp ${item.totalPrice.toLocaleString('id-ID')}${toppings}${bonus}`;
         }).join('\n');
 
         const separator = '--------------------------------';
@@ -216,6 +217,11 @@ export default function CheckoutPage() {
                                                                 + {t.name} (x{t.quantity})
                                                             </div>
                                                         ))}
+                                                    </div>
+                                                )}
+                                                {item.bonusDrink && (
+                                                    <div className={styles.bonusLine}>
+                                                        🎁 Bonus: {item.bonusDrink}
                                                     </div>
                                                 )}
                                             </div>

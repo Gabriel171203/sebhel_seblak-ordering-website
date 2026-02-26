@@ -94,6 +94,11 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                                 </div>
                                             </div>
                                         )}
+                                        {item.bonusDrink && (
+                                            <div className={styles.bonusBadge}>
+                                                🎁 Bonus: {item.bonusDrink}
+                                            </div>
+                                        )}
                                     </div>
                                     <div className={styles.itemPrice}>
                                         Rp {item.totalPrice.toLocaleString('id-ID')}
@@ -216,6 +221,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                     editCartId={editingItem.cartId}
                     initialSpiciness={editingItem.spicinessLevel ?? 0}
                     initialToppings={editingItem.selectedToppings}
+                    initialBonusDrink={editingItem.bonusDrink}
                 />
             )}
         </>

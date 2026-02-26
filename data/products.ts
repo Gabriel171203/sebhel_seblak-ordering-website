@@ -22,7 +22,7 @@ export const products: Product[] = [
     {
         id: 'p2',
         name: 'Paket Komplit',
-        description: 'Semua Topping Lengkap + Gratis Minuman (Es Teh/Jeruk).',
+        description: 'Semua Topping Lengkap + Gratis Minuman (Es Teh/Jeruk/Es Coklat).',
         price: 35000,
         image: '/images/products/seblakkomplit.webp',
         category: 'Paket Seblak',

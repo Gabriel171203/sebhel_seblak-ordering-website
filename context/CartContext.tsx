@@ -15,6 +15,7 @@ export type CartItem = Product & {
     quantity: number;
     spicinessLevel?: number;
     selectedToppings?: SelectedTopping[];
+    bonusDrink?: string; // For Paket Komplit
     note?: string;
     totalPrice: number;
 };
@@ -23,12 +24,13 @@ type CartOptions = {
     spiciness?: number;
     toppings?: SelectedTopping[];
     spicinessCost?: number;
+    bonusDrink?: string;
 };
 
 type CartContextType = {
     items: CartItem[];
     addToCart: (product: Product, options?: CartOptions) => void;
-    updateCartItem: (cartId: string, options: { spiciness: number; toppings: SelectedTopping[]; spicinessCost: number }) => void;
+    updateCartItem: (cartId: string, options: { spiciness: number; toppings: SelectedTopping[]; spicinessCost: number; bonusDrink?: string }) => void;
     updateQuantity: (cartId: string, delta: number) => void;
     updateToppingQuantityInItem: (cartId: string, toppingId: string, delta: number) => void;
     addToppingToItem: (cartId: string, topping: Product) => void;
@@ -80,6 +82,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             quantity: 1,
             spicinessLevel: options?.spiciness,
             selectedToppings: options?.toppings || [],
+            bonusDrink: options?.bonusDrink,
             totalPrice: itemTotal,
         };
 
@@ -90,7 +93,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setItems(items.filter(item => item.cartId !== cartId));
     };
 
-    const updateCartItem = (cartId: string, options: { spiciness: number; toppings: SelectedTopping[]; spicinessCost: number }) => {
+    const updateCartItem = (cartId: string, options: { spiciness: number; toppings: SelectedTopping[]; spicinessCost: number; bonusDrink?: string }) => {
         setItems(items.map(item => {
             if (item.cartId !== cartId) return item;
             const toppingsPrice = options.toppings.reduce((sum, t) => sum + (t.price * t.quantity), 0);
@@ -99,6 +102,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 ...item,
                 spicinessLevel: options.spiciness,
                 selectedToppings: options.toppings,
+                bonusDrink: options.bonusDrink,
                 totalPrice: unitPrice * item.quantity,
             };
         }));

@@ -14,9 +14,10 @@ type ProductModalProps = {
     initialSpiciness?: number;
     initialToppingNames?: string[]; // Kept for backward compatibility or initial simple list
     initialToppings?: SelectedTopping[];
+    initialBonusDrink?: string;
 };
 
-export default function ProductModal({ product, onClose, editCartId, initialSpiciness, initialToppingNames, initialToppings }: ProductModalProps) {
+export default function ProductModal({ product, onClose, editCartId, initialSpiciness, initialToppingNames, initialToppings, initialBonusDrink }: ProductModalProps) {
     const { addToCart, updateCartItem } = useCart();
     const isEditMode = !!editCartId;
 
@@ -36,6 +37,9 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
 
     const [spiciness, setSpiciness] = useState(initialSpiciness ?? 0);
     const [selectedToppings, setSelectedToppings] = useState<SelectedTopping[]>(preselectedToppings);
+    const [bonusDrink, setBonusDrink] = useState<string | undefined>(initialBonusDrink);
+
+    const bonusDrinkOptions = products.filter(p => p.category === 'Minuman' && (p.name === 'Es Teh' || p.name === 'Es Jeruk' || p.name === 'Es Coklat'));
 
     const updateToppingQuantity = (topping: Product, delta: number) => {
         const existing = selectedToppings.find(t => t.id === topping.id);
@@ -73,12 +77,14 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                 spiciness,
                 toppings: selectedToppings,
                 spicinessCost,
+                bonusDrink: product.id === 'p2' ? bonusDrink : undefined,
             });
         } else {
             addToCart(product, {
                 spiciness: product.customizable ? spiciness : undefined,
                 toppings: selectedToppings,
                 spicinessCost,
+                bonusDrink: product.id === 'p2' ? bonusDrink : undefined,
             });
         }
         onClose();
@@ -110,8 +116,8 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                                 {/* Spiciness Visual Effects layers */}
                                 {spiciness > 0 && (
                                     <div className={`${styles.spicinessBaseLayer} ${spiciness <= 3 ? styles.effectWarm :
-                                            spiciness <= 5 ? styles.effectHot :
-                                                styles.effectInferno
+                                        spiciness <= 5 ? styles.effectHot :
+                                            styles.effectInferno
                                         }`}>
                                         {/* Fire particles for high levels */}
                                         {spiciness > 3 && (
@@ -226,6 +232,28 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                                 })}
                             </div>
                         </div>
+
+                        {product.id === 'p2' && (
+                            <div className={`${styles.section} ${styles.bonusSection}`}>
+                                <div className={styles.bonusBadge}>🎁 BONUS SPESIAL</div>
+                                <h3 className={styles.sectionTitle}>PILIH MINUMAN GRATIS KAMU!</h3>
+                                <div className={styles.bonusGrid}>
+                                    {bonusDrinkOptions.map(drink => (
+                                        <button
+                                            key={drink.id}
+                                            className={`${styles.bonusItem} ${bonusDrink === drink.name ? styles.activeBonus : ''}`}
+                                            onClick={() => setBonusDrink(drink.name)}
+                                        >
+                                            <div className={styles.bonusVisual}>
+                                                <img src={drink.image} alt={drink.name} className={styles.bonusImg} />
+                                            </div>
+                                            <span className={styles.bonusName}>{drink.name}</span>
+                                            {bonusDrink === drink.name && <div className={styles.checkMark}>✓</div>}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Right Column: Receipt / Summary */}
@@ -251,6 +279,13 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
                                     <span>Rp {(t.price * t.quantity).toLocaleString('id-ID')}</span>
                                 </div>
                             ))}
+
+                            {product.id === 'p2' && bonusDrink && (
+                                <div className={`${styles.receiptItem} ${styles.bonusReceipt}`}>
+                                    <span>🎁 Bonus: {bonusDrink}</span>
+                                    <span>GRATIS</span>
+                                </div>
+                            )}
 
                             <div className={styles.receiptDivider}></div>
 
