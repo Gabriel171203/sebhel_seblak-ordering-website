@@ -39,7 +39,10 @@ export default function ProductList() {
         const searchMatch = p.name.toLowerCase().includes(searchQuery) ||
             p.description.toLowerCase().includes(searchQuery);
 
-        return categoryMatch && searchMatch;
+        // 3. Filter by Availability
+        const availabilityMatch = p.isAvailable !== false;
+
+        return categoryMatch && searchMatch && availabilityMatch;
     });
 
     const handleProductClick = (product: Product) => {
@@ -107,7 +110,7 @@ export default function ProductList() {
     };
 
     return (
-        <section id="menu" className={styles.section}>
+        <section id="menu-section" className={styles.section}>
             <div className={styles.container}>
 
                 <h2 className={styles.heading}>MENU SEBHEL</h2>

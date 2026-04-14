@@ -22,7 +22,7 @@ export default function ProductModal({ product, onClose, editCartId, initialSpic
     const isEditMode = !!editCartId;
 
     // Pre-fill toppings from names or full objects when in edit mode
-    const availableToppings = products.filter(p => p.category === 'Topping');
+    const availableToppings = products.filter(p => p.category === 'Topping' && p.isAvailable !== false);
 
     let preselectedToppings: SelectedTopping[] = [];
     if (isEditMode) {

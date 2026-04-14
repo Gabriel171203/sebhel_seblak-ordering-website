@@ -1,0 +1,193 @@
+/* ── Overlay ─────────────────────────────────────────────────────────────── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    /* dark scrim — spotlight punches a hole via .spotlight box-shadow */
+    background: rgba(0, 0, 0, 0.0);
+    z-index: 9998;
+    pointer-events: none;
+}
+
+/* ── Spotlight ───────────────────────────────────────────────────────────── */
+.spotlight {
+    position: fixed;
+    /* set in JS */
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 9999;
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        left 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Creates the dark overlay around the spotlight */
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75),
+        0 0 0 3px rgba(255, 255, 255, 0.25),
+        0 0 20px 4px rgba(255, 77, 77, 0.25);
+}
+
+/* ── Tooltip container ───────────────────────────────────────────────────── */
+.content {
+    position: fixed;
+    /* set in JS */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 10001;
+    pointer-events: auto;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    text-align: center;
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Arrow ───────────────────────────────────────────────────────────────── */
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-primary, #ff4d4d);
+    filter: drop-shadow(0 0 6px rgba(255, 77, 77, 0.7));
+    animation: arrowBounce 1.4s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+/* ── Tooltip card ────────────────────────────────────────────────────────── */
+.tooltip {
+    background: #ffffff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    color: #1a1a1a;
+    border: 3px solid var(--color-primary, #ff4d4d);
+    width: 100%;
+}
+
+.title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.description {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #444;
+    margin-bottom: 0.75rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.nextBtn {
+    background: var(--color-primary, #ff4d4d);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.1rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.nextBtn:hover {
+    background: #e60000;
+    transform: translateY(-2px);
+}
+
+.skipBtn {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.skipBtn:hover {
+    color: #555;
+}
+
+/* ── Arrow direction variants ────────────────────────────────────────────── */
+/* Base ArrowDown icon points ↓  */
+.arrowTop {
+    /* tooltip is ABOVE target → arrow should point DOWN ↓ */
+    transform: rotate(0deg);
+}
+
+.arrowBottom {
+    /* tooltip is BELOW target → arrow should point UP ↑ */
+    transform: rotate(180deg);
+}
+
+.arrowLeft {
+    /* tooltip is LEFT of target → arrow should point RIGHT → */
+    transform: rotate(-90deg);
+}
+
+.arrowRight {
+    /* tooltip is RIGHT of target → arrow should point LEFT ← */
+    transform: rotate(90deg);
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes arrowBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/* Keep bounce in sync with rotation for Left/Right */
+.arrowLeft {
+    animation: arrowBounceLeft 1.4s ease-in-out infinite;
+}
+
+.arrowRight {
+    animation: arrowBounceRight 1.4s ease-in-out infinite;
+}
+
+@keyframes arrowBounceLeft {
+
+    0%,
+    100% {
+        transform: rotate(-90deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-90deg) translateY(8px);
+    }
+}
+
+@keyframes arrowBounceRight {
+
+    0%,
+    100% {
+        transform: rotate(90deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(90deg) translateY(8px);
+    }
+}

@@ -34,7 +34,7 @@ const helpTopics = [
 ];
 
 interface HelpAssistantProps {
-    onOpenTutorial: (stepIndex?: number) => void;
+    onOpenTutorial: (stepIndex?: number, isSingleStep?: boolean) => void;
 }
 
 export default function HelpAssistant({ onOpenTutorial }: HelpAssistantProps) {
@@ -44,9 +44,9 @@ export default function HelpAssistant({ onOpenTutorial }: HelpAssistantProps) {
         if (topic.link) return;
 
         if (topic.title === "Cara Order") {
-            onOpenTutorial(0);
+            onOpenTutorial(2, true); // Menu/Paket section
         } else if (topic.title === "Syarat Topping") {
-            onOpenTutorial(2);
+            onOpenTutorial(3, true); // Topping Info section
         } else if (topic.title === "Kritik & Saran") {
             const contactSection = document.getElementById('contact');
             if (contactSection) {
@@ -55,7 +55,7 @@ export default function HelpAssistant({ onOpenTutorial }: HelpAssistantProps) {
                 window.location.href = '/#contact';
             }
         } else if (topic.title === "Kustomisasi (Lab)") {
-            onOpenTutorial(1);
+            onOpenTutorial(5, true); // Cart drawer/Lab info
         }
         setIsOpen(false);
     };
@@ -119,10 +119,10 @@ export default function HelpAssistant({ onOpenTutorial }: HelpAssistantProps) {
 
                 <div className={styles.footer}>
                     <button className={styles.tutorialBtn} onClick={() => {
-                        onOpenTutorial(0);
+                        onOpenTutorial();
                         setIsOpen(false);
                     }}>
-                        Ulang Tutorial
+                        Ulang Tutorial Interaktif
                     </button>
                 </div>
             </div>

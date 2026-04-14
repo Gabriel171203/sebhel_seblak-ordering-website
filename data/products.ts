@@ -6,6 +6,7 @@ export type Product = {
     image: string;
     category: string;
     customizable: boolean;
+    isAvailable?: boolean;
 };
 
 export const products: Product[] = [
@@ -13,7 +14,7 @@ export const products: Product[] = [
     {
         id: 'p1',
         name: 'Paket Basic',
-        description: 'Kerupuk mawar, kerupuk kemplang, mie.',
+        description: 'Kerupuk warna-warni, Kerupuk kemplang, Mie.',
         price: 10000,
         image: '/images/products/seblakbasic.jpeg',
         category: 'Paket Seblak',
@@ -44,8 +45,9 @@ export const products: Product[] = [
     { id: 't12', name: 'Fish Ball', description: 'Topping', price: 1000, image: '/images/products/fishball.jpeg', category: 'Topping', customizable: false },
     { id: 't13', name: 'Dumpling Keju', description: 'Topping', price: 2000, image: '/images/products/dumplingcheese.jpeg', category: 'Topping', customizable: false },
     { id: 't14', name: 'Dumpling Ayam', description: 'Topping', price: 2000, image: '/images/products/dumplingchicken.jpeg', category: 'Topping', customizable: false },
-    { id: 't15', name: 'Ceker', description: 'Topping', price: 3000, image: '/images/products/ceker.jpeg', category: 'Topping', customizable: false },
+    { id: 't15', name: 'Ceker', description: 'Topping', price: 3000, image: '/images/products/cekerayam.jpg', category: 'Topping', customizable: false, isAvailable: false },
     { id: 't16', name: 'Telur', description: 'Topping', price: 2500, image: '/images/products/telur.jpeg', category: 'Topping', customizable: false },
+    { id: 't17', name: 'Bakso Ikan Salmon', description: 'Topping', price: 2500, image: '/images/products/baksoikansalmon.jpeg', category: 'Topping', customizable: false },
 
     // MINUMAN
     { id: 'd1', name: 'Es Jeruk', description: 'Segar alami.', price: 3000, image: '/images/products/esjeruk.jpeg', category: 'Minuman', customizable: false },

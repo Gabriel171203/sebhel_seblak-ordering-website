@@ -41,7 +41,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
         );
     };
 
-    const availableToppings = products.filter(p => p.category === 'Topping');
+    const availableToppings = products.filter(p => p.category === 'Topping' && p.isAvailable !== false);
 
     if (!isVisible && !isOpen) return null;
 
@@ -196,11 +196,11 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                         <div className={styles.footerActions}>
                             <button className={styles.addMoreBtn} onClick={() => {
                                 onClose();
-                                const menuSection = document.getElementById('menu');
+                                const menuSection = document.getElementById('menu-section');
                                 if (menuSection) {
                                     menuSection.scrollIntoView({ behavior: 'smooth' });
                                 } else {
-                                    window.location.href = '/#menu';
+                                    window.location.href = '/#menu-section';
                                 }
                             }}>
                                 <PlusCircle size={18} /> Tambah Pesanan

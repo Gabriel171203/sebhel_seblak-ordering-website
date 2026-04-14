@@ -13,6 +13,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const { items } = useCart();
+    const [mounted, setMounted] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [suggestions, setSuggestions] = useState<typeof products>([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -20,6 +21,10 @@ export default function Navbar() {
     const searchParams = useSearchParams();
 
     const cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Sync state with URL query on mount/update
     useEffect(() => {
@@ -44,8 +49,9 @@ export default function Navbar() {
 
         if (query.trim()) {
             const filtered = products.filter(p =>
-                p.name.toLowerCase().includes(query.toLowerCase()) ||
-                p.category.toLowerCase().includes(query.toLowerCase())
+                (p.name.toLowerCase().includes(query.toLowerCase()) ||
+                    p.category.toLowerCase().includes(query.toLowerCase())) &&
+                p.isAvailable !== false
             ).slice(0, 5); // Limit to 5 suggestions
             setSuggestions(filtered);
             setShowSuggestions(filtered.length > 0);
@@ -62,7 +68,7 @@ export default function Navbar() {
         setShowSuggestions(false);
         router.replace(`?q=${name}`, { scroll: false });
         // Optional: Scroll to menu
-        const menuHeader = document.getElementById('menu');
+        const menuHeader = document.getElementById('menu-section');
         if (menuHeader) menuHeader.scrollIntoView({ behavior: 'smooth' });
     };
 
@@ -88,7 +94,7 @@ export default function Navbar() {
                     </div>
 
                     <div className={styles.actions}>
-                        <div className={`${styles.searchBar} glass`}>
+                        <div id="navbar-search" className={`${styles.searchBar} glass`}>
                             <input
                                 type="text"
                                 placeholder="Cari menu..."
@@ -136,9 +142,9 @@ export default function Navbar() {
                             )}
                         </div>
 
-                        <button className={styles.cartButton} onClick={() => setIsCartOpen(true)}>
+                        <button id="cart-button" className={styles.cartButton} onClick={() => setIsCartOpen(true)}>
                             <span className={styles.cartText}>PESAN</span>
-                            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+                            {mounted && cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
                         </button>
 
                         <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>

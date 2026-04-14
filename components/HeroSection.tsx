@@ -5,7 +5,7 @@ import { ArrowRight, Flame, Sparkles, Zap } from 'lucide-react';
 export default function HeroSection() {
     const scrollToMenu = (e: React.MouseEvent) => {
         e.preventDefault();
-        const menuSection = document.getElementById('menu');
+        const menuSection = document.getElementById('menu-section');
         if (menuSection) {
             const offset = 80; // Navbar height offset
             const bodyRect = document.body.getBoundingClientRect().top;
@@ -41,7 +41,7 @@ export default function HeroSection() {
                     <p className={styles.description}>
                         Racik seblak impianmu dengan topping melimpah dan tingkat kepedasan yang pas di hati. Garansi ketagihan!
                     </p>
-                    <div className={styles.actions}>
+                    <div id="hero-actions" className={styles.actions}>
                         <a href="#menu" onClick={scrollToMenu} className="btn btn-primary">
                             Mulai Pesan <ArrowRight size={18} style={{ marginLeft: '8px' }} />
                         </a>
